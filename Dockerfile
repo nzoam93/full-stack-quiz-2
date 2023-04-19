@@ -15,6 +15,7 @@ RUN gem install bundler && \
 COPY . .
 
 # # Run database setup and migrations
+## you can't do this yet because the db hasn't been created 
 # RUN rails db:create && rails db:migrate
 
 # Expose a port for your Rails application to run on. Note that it's 3001 because that's what we specified in our puma.rb file

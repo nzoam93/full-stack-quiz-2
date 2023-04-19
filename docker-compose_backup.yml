@@ -1,0 +1,27 @@
+version: '3'
+services:
+  backend:
+    image: rails-project-2-backend:latest
+    ports:
+      - "3001:3001" #...:3001 because I configured puma.rb to listen on port 3001
+    networks:
+      - my-network
+    depends_on:
+      - db # Add this line to specify the dependency
+  frontend:
+    image: rails-project-2-frontend:latest
+    ports:
+      - "3000:3000" #What you expose to the host: what the application is actually running in the container
+    networks:
+      - my-network
+  db:
+    image: rails-project-2-db:latest
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    networks:
+      - my-network
+
+networks:
+  my-network:
