@@ -20,10 +20,20 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  #added for Docker by NZ. To get it to work outside of docker, just comment out the below lines
+  host: db # Use the service name of the database container defined in Docker Compose. Note it's db, not my-postgresql-db (because db is the key in the docker-compose file)
+  port: 5432
+  # username: <%= ENV['POSTGRES_USER'] %>   #match the name in the YML file
+  # password: <%= ENV['POSTGRES_PASSWORD'] %>
+  username: myuser
+  password: mypassword 
+  database: mydb # Specify the database name here
 
 development:
   <<: *default
-  database: my_rails_project_2_development
+  # database: my_rails_project_2_development
+  database: mydb
+
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

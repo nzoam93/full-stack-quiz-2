@@ -12,9 +12,9 @@ const QuestionIndex = () => {
 
     //Make a fetch requset to the Rails API endpoint
     useEffect(() => {
-        // fetch (`http://localhost:3001/questions`) is blocked by CORS so we need to have the proxy in the package.json file
-        // the proxy we put there is automatically prepended to /questions below
-        fetch ('/api/questions')
+        // fetch ('/api/questions) should work because we have set up the proxy
+        //but that's not working so we will just add the full api instead
+        fetch ('http://localhost:3001/api/questions')
             .then(response => response.json())
             .then(data => setQuestions(data))
             .catch(error => console.log(error));
