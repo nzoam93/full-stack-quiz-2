@@ -4,11 +4,13 @@ FROM node:latest
 # Set the working directory in the container
 WORKDIR /frontend_app
 
-# Copy package.json and package-lock.json to the container
-COPY package*.json ./
+# Copy package.json 
+#Note: we do NOT want to copy the package-lock.json because that is more specific (and may not work for all architectures)
+COPY package.json ./
 
 # Install dependencies
-RUN npm ci
+# note: do not do npm ci as that copies the package-lock
+RUN npm install 
 
 # Copy the rest of the application code to the container
 COPY . .
