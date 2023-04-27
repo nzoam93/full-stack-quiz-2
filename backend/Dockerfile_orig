@@ -12,15 +12,7 @@ RUN gem install bundler && \
     bundle install --jobs 4 --retry 3
 
 # Copy the rest of your Rails application code to the container
-COPY app /app/app
-COPY bin /app/bin
-COPY config /app/config
-COPY db /app/db
-# COPY log /app/log 
-COPY config.ru /app/config.ru 
-COPY Rakefile /app/Rakefile
-# COPY public /app/public
-# COPY vendor /app/vendor
+COPY . .
 
 # # Run database setup and migrations
 ## you can't do this yet because the db hasn't been created 
