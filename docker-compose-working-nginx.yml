@@ -21,8 +21,7 @@ services:
     # Mount the current directory (your Rails backend project directory) as a volume in the container
     # This allows for live code reloading during development
   frontend:
-    image: nginx-trial-nginx-conf
-    # image: nginx-trial
+    image: nginx-trial-proxied
     # image: nzoam93/rails-full-stack-2-frontend-nginx-2
     # image: nzoam93/rails-full-stack-2-frontend
     # image: frontend-trial-stefan
@@ -31,12 +30,6 @@ services:
       - "3000:80" #What you expose to the host: what the application is actually running in the container
     networks:
       - my-network
-
-    #added to try to serve the backend api 
-    links:
-      - backend
-    # environment:
-    #   - REACT_APP_API_URL=http://backend:3001
   db:
     image: nzoam93/rails-full-stack-2-db
     # image: db-trial-stefan

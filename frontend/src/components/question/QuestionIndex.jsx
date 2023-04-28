@@ -12,6 +12,7 @@ const QuestionIndex = () => {
 
     //Make a fetch requset to the Rails API endpoint
     useEffect(() => {
+        // fetch('api/questions')
         // fetch ('/api/questions) should work because we have set up the proxy
         //but that's not working so we will just add the full api instead
         fetch ('http://localhost:3001/api/questions')
